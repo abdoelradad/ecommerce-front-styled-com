@@ -14,8 +14,7 @@ export default function NavMobile() {
   `;
 
   const StyleNav = styled.div`
-    color: ${isOpen ? "white" : "green"};
-    position: absolute;
+    position: fixed;
     background-color: #222;
     top: 65px;
     right: ${isOpen ? "0" : "-100%"};

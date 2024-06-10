@@ -11,8 +11,9 @@ const StyledHeader = styled.header`
 `;
 const Logo = styled(Link)`
   color: #eee;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
+  text-transform: uppercase;
   text-decoration: none;
   span {
     color: #ffc43a;
