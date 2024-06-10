@@ -10,10 +10,13 @@ const StyledHeader = styled.header`
   background-color: #222;
 `;
 const Logo = styled(Link)`
-  color: #ffc43a;
-  font-size: 2rem;
+  color: #eee;
+  font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  span {
+    color: #ffc43a;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -42,7 +45,9 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={"/"}>UGIX</Logo>
+          <Logo href={"/"}>
+            <span>Smart</span>mall
+          </Logo>
           <StyleNav>
             <NavLink href={"/"}>Home</NavLink>
             <NavLink href={"/products"}>All products</NavLink>
