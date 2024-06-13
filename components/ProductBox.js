@@ -1,17 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
+import React, { useState } from "react";
 import Link from "next/link";
 import { useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "./CartContext";
+import { FaShoppingCart } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const ProductWrapper = styled.div`
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #fcfcfc;
-  border-radius: 20px;
-  box-shadow: 0 5px 10px #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 3px #ccc;
   transition: all 0.3s;
   &:hover {
-    box-shadow: 0 5px 20px #ccc;
+    box-shadow: 0 5px 5px #ccc;
   }
 `;
 
@@ -36,6 +39,7 @@ const Title = styled(Link)`
   text-decoration: underline;
   color: #000;
   margin: 0;
+  padding: 0 10px;
 `;
 
 const Button = styled.button`
@@ -44,13 +48,20 @@ const Button = styled.button`
   border-radius: 10px;
   border: none;
   outline: none;
-  background-color: #020202;
+  background-color: var(--primary-color);
   color: white;
-  font-weight: 600;
-  text-transform: capitalize;
-  font-size; 18px;
   cursor: pointer;
-  `;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    font-size: 1.5rem;
+  }
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+  transition: all 0.3s;
+`;
 
 const ProductInfoBox = styled.div`
   margin-top: 10px;
@@ -61,17 +72,20 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
 `;
 
 const Price = styled.p`
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 5px;
 `;
+const notify = () =>
+  toast.success("Items has been added to cart successfully!");
 
 export default function ProductBox({ _id, title, description, price, images }) {
   const url = "/product/" + _id;
   const { addProduct } = useContext(CartContext);
+
   return (
     <ProductWrapper>
       <WhiteBox href={url} target="_blank">
@@ -85,9 +99,37 @@ export default function ProductBox({ _id, title, description, price, images }) {
         </Title>
         <Row>
           <Price>${price}</Price>
-          <Button onClick={() => addProduct(_id)}>Add to cart</Button>
+          <Button
+            onClick={() => {
+              addProduct(_id), notify();
+            }}
+          >
+            <span>
+              <FaShoppingCart />
+            </span>
+          </Button>
         </Row>
       </ProductInfoBox>
+      <Toaster
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </ProductWrapper>
   );
 }

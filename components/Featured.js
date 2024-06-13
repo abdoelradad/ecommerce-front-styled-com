@@ -4,24 +4,17 @@ import Center from "./Center";
 import Image from "next/image";
 
 const Bg = styled.div`
-  background: rgb(10, 6, 84);
-  background: linear-gradient(
-    90deg,
-    rgba(10, 6, 84, 1) 0%,
-    rgba(18, 18, 208, 1) 40%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  color: #fff;
-  padding: 80px 0;
+  padding: 40px 0;
+  background-color: #f8f8f8;
 `;
 const Title = styled.h1`
   font-weight: semi-bold;
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 20px;
 `;
 
 const Desc = styled.p`
-  color: #fff;
+  color: #333;
   font-size: 1rem;
   line-height: 1.5;
 `;
@@ -46,7 +39,7 @@ const StyledImg = styled.img`
 
 const S = styled.p`
   display: inline;
-  color: #ffc43a;
+  color: #6a5acd;
   font-weight: semi-bold;
   font-size: 3rem;
   margin-bottom: 20px;
@@ -70,13 +63,12 @@ export default function Featured() {
         <Wrapper>
           <Info>
             <Title>
-              <S>Pro</S> anywhere
+              Pro <S>anywhere</S> anywhere as you expected.
             </Title>
             <Desc>
               Instead of going to the local malls for a shopping spree, more and
               more people are using the variety of online resources to discover
-              the right products for them. From giants like Amazon to small Etsy
-              stores.
+              the right products for them.
             </Desc>
           </Info>
           <div>
